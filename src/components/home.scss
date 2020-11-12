@@ -1,0 +1,92 @@
+@import '../style/variables';
+@import '../style/breakpoints';
+
+.introContainer {
+  font-family: 'Nunito Sans', sans-serif;
+  visibility: visible;
+  opacity: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $blue;
+
+  .intro {
+    color: white;
+    margin-left: 25vw;
+    margin-top: 20vh;
+    position: relative;
+    .line {
+      margin-bottom: 8px;
+      height: 80px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      p {
+        position: absolute;
+        margin: 0;
+      }
+      .reverse {
+        color: $blue;
+        -webkit-text-stroke: 1px rgba($color: #fff, $alpha: 1);
+      }
+      .title {
+        margin-bottom: 0px;
+        font-weight: 800;
+        font-size: 66px;
+        line-height: 4.2rem;
+      }
+
+      .subTitle {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 4.2rem;
+        color: $pink;
+      }
+      .desc {
+        max-width: 600px;
+      }
+    }
+    .offest {
+      position: absolute;
+      width: 100%;
+      height: 80px;
+      top: 225px;
+    }
+    .space {
+      margin-top: 100px;
+    }
+    .bubble {
+      width: 60px;
+      height: 60px;
+      border-radius: 60px;
+      border: solid 2px $pink;
+      position: absolute;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.875rem;
+    }
+    .one {
+      left: 340px;
+    }
+    .two {
+      left: 685px;
+    }
+  }
+  .stairsContainer {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    // height: 100vh;
+    width: 95vw;
+    .wall {
+      width: 10.45vw;
+      height: 100vh;
+      background-color: white;
+    }
+  }
+}
