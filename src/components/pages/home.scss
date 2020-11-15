@@ -1,5 +1,5 @@
-@import '../style/variables';
-@import '../style/breakpoints';
+@import '../../style/variables';
+@import '../../style/breakpoints';
 
 .introContainer {
   font-family: 'Nunito Sans', sans-serif;
@@ -7,14 +7,20 @@
   opacity: 1;
   height: 100vh;
   display: flex;
+  position: relative;
   flex-direction: column;
   background-color: $blue;
-
+  .introTransition {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+  }
   .intro {
     color: white;
     margin-left: 25vw;
     margin-top: 20vh;
     position: relative;
+
     .line {
       margin-bottom: 8px;
       height: 80px;
@@ -78,15 +84,24 @@
     }
   }
   .stairsContainer {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    // height: 100vh;
-    width: 95vw;
+    position: fixed;
+    bottom: -10px;
+    left: -10px;
+
+    width: 100vw;
+
     .wall {
-      width: 10.45vw;
+      width: 11.45vw;
       height: 100vh;
       background-color: white;
     }
+  }
+  .pageTransition {
+    position: absolute;
+    left: -100vw;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background: white;
   }
 }

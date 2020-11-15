@@ -5,9 +5,6 @@ import '@lottiefiles/lottie-player'
 import { create } from '@lottiefiles/lottie-interactivity'
 
 const Home = () => {
-  const [load, setLoad] = useState(false)
-  const [finishLoad, setFinishLoad] = useState(false)
-
   const myRef = useRef()
 
   // Title Animation
@@ -17,7 +14,7 @@ const Home = () => {
       .from('.line p', 1, {
         y: 200,
         ease: 'power4.out',
-        delay: 0,
+        delay: 0.5,
         skewY: 7,
         stagger: { amount: 0.3 },
       })
@@ -28,8 +25,15 @@ const Home = () => {
         skewY: 7,
         stagger: { amount: 0.3 },
       })
-    setTimeout(() => setLoad(true), 1200)
-    setTimeout(() => setFinishLoad(true), 2000)
+      .from('.stairsContainer', 1, {
+        opacity: 0,
+        y: 200,
+        ease: 'power4.out',
+        delay: -2,
+
+        stagger: { amount: 0.3 },
+      })
+
     myRef.current.addEventListener('load', function (e) {
       // 4. configure the interactivity library
       create({
@@ -79,16 +83,17 @@ const Home = () => {
             </p>
           </div>
         </div>
-
         <div className="stairsContainer">
           <div className="wall"></div>
           <lottie-player
             ref={myRef}
             id="firstLottie"
             mode="normal"
-            src="https://assets2.lottiefiles.com/packages/lf20_jqg4pvou.json"
+            src="https://assets8.lottiefiles.com/packages/lf20_jqg4pvou.json"
+            style={{ width: '102%' }}
           ></lottie-player>
         </div>
+        <div className="pageTransition"></div>
       </div>
     </div>
   )

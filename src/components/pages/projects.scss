@@ -1,0 +1,11 @@
+@import '../../style/variables';
+@import '../../style/breakpoints';
+
+.projectPageTransition {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: $blue;
+}
