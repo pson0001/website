@@ -1,10 +1,10 @@
 import React from 'react'
 import './projects.scss'
-const Projects = () => {
+const Projects = (props) => {
+  console.log(props)
   return (
-    <div>
-      Projects
-      <div className="projectPageTransition"></div>
+    <div className="projectsContainer">
+      <div className="projects">hi</div>
     </div>
   )
 }

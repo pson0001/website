@@ -1,0 +1,112 @@
+@import '../../style/variables';
+@import '../../style/breakpoints';
+
+.aboutContainer {
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: $blue;
+
+  z-index: 9;
+  height: 100%;
+  width: 100%;
+  .about {
+    color: white;
+    height: 200vh;
+    width: 80vw;
+    margin: auto;
+    margin-top: 300px;
+    .aboutIntro {
+      height: 800px;
+      .aboutTitleLine {
+        margin-bottom: 100px;
+        height: 12rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+
+        p {
+          position: absolute;
+          margin: 0;
+        }
+        .reverse {
+          color: $blue;
+          -webkit-text-stroke: 1.5px rgba($color: #fff, $alpha: 1);
+        }
+        .title {
+          margin-bottom: 0px;
+          font-weight: 800;
+          font-size: 9rem;
+          line-height: 9rem;
+        }
+
+        .desc {
+          max-width: 600px;
+          font-size: 18px;
+        }
+      }
+
+      .aboutLine {
+        margin-bottom: 8px;
+        height: 3.2rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        .subTitle {
+          font-weight: 800;
+          font-size: 2.2rem;
+          line-height: 2rem;
+          margin: 0;
+        }
+      }
+      .aboutLine {
+        margin-bottom: 8px;
+        height: 3.2rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        .subTitle {
+          font-weight: 800;
+          font-size: 2.2rem;
+          line-height: 2rem;
+          margin: 0;
+        }
+      }
+      .aboutDescLine {
+        margin-bottom: 8px;
+        line-height: 4.2rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        .paragraph {
+          max-width: 700px;
+          font-weight: 500;
+          font-size: 1.2rem;
+          line-height: 2rem;
+          margin: 0;
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
+    .process {
+      .processTitle {
+        span:first-child {
+          font-weight: 800;
+          font-size: 6rem;
+          line-height: 4.2rem;
+          color: $blue;
+          -webkit-text-stroke: 1.5px rgba($color: #fff, $alpha: 1);
+        }
+        span {
+          padding-right: 20px;
+          font-weight: 600;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

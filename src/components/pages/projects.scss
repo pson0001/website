@@ -1,11 +1,17 @@
 @import '../../style/variables';
 @import '../../style/breakpoints';
 
-.projectPageTransition {
-  position: absolute;
-  right: 0;
-  top: 0;
+.projectsContainer {
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: white;
+
+  z-index: 9;
   height: 100%;
-  width: 0%;
-  background: $blue;
+  width: 100%;
+  .projects {
+    color: white;
+    height: 200vh;
+  }
 }

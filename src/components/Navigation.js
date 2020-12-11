@@ -5,119 +5,226 @@ import { ArrowLeft } from '../assets/Icon.js'
 import { ArrowRight } from '../assets/Icon.js'
 import gsap from 'gsap'
 
-const Navigation = () => {
+const Navigation = (props) => {
+  const [load, setLoad] = useState(false)
   const history = useHistory()
+
+  const tlNav = gsap.timeline()
   const projectTransition = gsap.timeline()
-  const navTransition = gsap.timeline()
-  const backProjectTransition = gsap.timeline()
   const location = useLocation()
 
   useEffect(() => {
-    if (location.pathname === '/projects') {
-      navTransition
-        .to('.projects', 0.2, { opacity: 0 })
-        .to('.about', 0.2, { opacity: 0 })
-        .to('.projectBack', 0.2, { y: -22, opacity: 1 })
+    setTimeout(() => {
+      setLoad(true)
+    }, 1000)
+  }, [])
+
+  useEffect(() => {
+    if (load) {
+      tlNav.from('.nav', 1, {
+        y: 20,
+        ease: 'power4.out',
+        opacity: 0,
+        stagger: { amount: 0.3 },
+      })
     }
-    if (location.pathname === '/') {
-      navTransition
-        .to('.projects', 0.2, { opacity: 1 })
-        .to('.about', 0.2, { opacity: 1 })
-        .to('.projectBack', 0.2, { y: 0, opacity: 0 })
-    }
+  }, [load])
+
+  useEffect(() => {
+    props.pathnameHandler(location.pathname)
   }, [location.pathname])
+  useEffect(() => {
+    if (location.pathname === '/about' && load) {
+      projectTransition
+        .to('.bgCircle', 1.2, {
+          xPercent: -100,
+          ease: 'power3.inOut',
+        })
+        .to('.intro', 1.2, {
+          delay: -1.2,
+          xPercent: -100,
+          ease: 'power3.inOut',
+        })
+        .to('.aboutTransition', 0.8, {
+          delay: -1.2,
+          width: '100%',
+          ease: 'power3.inOut',
+        })
+    }
+  }, [location, load])
 
   // Handle project animation
-  const ProjectHandler = (e) => {
+  const projectHandler = (e) => {
     e.preventDefault()
     projectTransition
-      .to('.stairsContainer', 1, {
+      .to('.intro', 1.2, {
         xPercent: 100,
-        delay: 0.5,
         ease: 'power3.inOut',
       })
-      .to('.pageTransition', 1, {
+      .to('.bgCircle', 1.2, {
+        delay: -1.1,
         xPercent: 100,
-        delay: -1,
         ease: 'power3.inOut',
       })
-      .to('.intro', 0.5, {
+      .to('.projectsLink', 0.3, {
+        delay: -1.3,
         opacity: 0,
-        delay: -1.2,
         ease: 'power3.inOut',
       })
-      .to('.projects', 0.5, {
+      .to('.aboutLink', 0.3, {
+        delay: -1.3,
         opacity: 0,
-        delay: -1.2,
         ease: 'power3.inOut',
       })
-      .to('.about', 0.2, { delay: -1.2, opacity: 0 })
 
     window.setTimeout(() => {
       history.push({
         pathname: '/projects',
         state: { detail: true },
       })
-    }, 1500)
+    }, 1300)
   }
 
-  const backHandler = (e) => {
+  const projectBackHandler = (e) => {
     e.preventDefault()
-    backProjectTransition
-      .to('.projectPageTransition', 1, {
-        width: '100%',
-        ease: 'power3.inOut',
-      })
-      .to('.projectBack', 0.2, { y: -22, opacity: 0, delay: -1 })
+
     window.setTimeout(() => {
       history.push({
         pathname: '/',
         state: { detail: true },
       })
-    }, 1000)
+    }, 600)
+
+    projectTransition
+      .to('.bgCircle', 1.2, {
+        xPercent: 0,
+        ease: 'power3.inOut',
+      })
+      .to('.intro', 1.2, { delay: -1.2, xPercent: 0, ease: 'power3.inOut' })
+  }
+
+  // Handle about haviour
+  const aboutHandler = (e) => {
+    e.preventDefault()
+
+    projectTransition
+      .to('.bgCircle', 1.2, {
+        xPercent: -100,
+        ease: 'power3.inOut',
+      })
+      .to('.intro', 1.2, { delay: -1.2, xPercent: -100, ease: 'power3.inOut' })
+      .to('.aboutTransition', 0.8, {
+        delay: -1.2,
+        width: '100%',
+        ease: 'power3.inOut',
+      })
+      .to('.projectsLink', 0.3, {
+        delay: -1.3,
+        opacity: 0,
+        ease: 'power3.inOut',
+      })
+      .to('.aboutLink', 0.3, {
+        delay: -1.3,
+        opacity: 0,
+        ease: 'power3.inOut',
+      })
+
+    window.setTimeout(() => {
+      history.push({
+        pathname: '/about',
+        state: { detail: true },
+      })
+    }, 1500)
+  }
+
+  const aboutBackHandler = (e) => {
+    e.preventDefault()
+
+    window.setTimeout(() => {
+      history.push({
+        pathname: '/',
+        state: { detail: true },
+      })
+    }, 600)
+
+    projectTransition
+      .to('.bgCircle', 1.2, {
+        xPercent: 0,
+        ease: 'power3.inOut',
+      })
+      .to('.intro', 1.2, { delay: -1.2, xPercent: 0, ease: 'power3.inOut' })
+      .to('.aboutTransition', 0.8, {
+        delay: -0.8,
+        width: '0%',
+        ease: 'power3.inOut',
+      })
   }
 
   return (
-    <div className="nav">
-      <ul>
-        <li className="projectsNav">
-          <Link
-            to="/projects"
-            onClick={(e) => ProjectHandler(e)}
-            className="projects"
-          >
-            <ArrowLeft></ArrowLeft>
-            <span>Projects</span>
-          </Link>
-          <Link
-            to="/home"
-            className="aboutBack"
-            onClick={(e) => backHandler(e)}
-          >
-            Back to Home
-          </Link>
-        </li>
-        <li className="home">
-          <Link to="/">
-            <div className="homeP">
-              <span>P</span>
-            </div>
-          </Link>
-        </li>
-        <li className="aboutNav">
-          <Link to="/about" className="about">
-            <span> About</span> <ArrowRight></ArrowRight>
-          </Link>
-          <Link
-            to="/home"
-            className="projectBack"
-            onClick={(e) => backHandler(e)}
-          >
-            <span>Back to Home</span>
-            <ArrowRight></ArrowRight>
-          </Link>
-        </li>
-      </ul>
+    <div>
+      {load ? (
+        <div className="nav">
+          <ul>
+            <li className="projectsNav">
+              {location.pathname === '/' ? (
+                <div>
+                  <Link
+                    to="/projects"
+                    className="projectsLink"
+                    onClick={(e) => projectHandler(e)}
+                  >
+                    <ArrowLeft></ArrowLeft>
+                    <span>Projects</span>
+                  </Link>
+                </div>
+              ) : null}
+
+              {location.pathname === '/about' ? (
+                <div>
+                  <Link
+                    to="/"
+                    className="aboutBackLink"
+                    onClick={(e) => aboutBackHandler(e)}
+                  >
+                    <ArrowLeft></ArrowLeft>
+                    <span>Back to Home</span>
+                  </Link>
+                </div>
+              ) : null}
+            </li>
+            <li className="homeNav">
+              <Link to="/">
+                <div className="homeLink">
+                  <span>P</span>
+                </div>
+              </Link>
+            </li>
+            <li className="aboutNav">
+              {location.pathname === '/' ? (
+                <div>
+                  <Link
+                    to="/about"
+                    className="aboutLink"
+                    onClick={(e) => aboutHandler(e)}
+                  >
+                    <span> About</span> <ArrowRight></ArrowRight>
+                  </Link>
+                </div>
+              ) : null}
+              {location.pathname === '/projects' ? (
+                <Link
+                  to="/"
+                  className="projectBackLink"
+                  onClick={(e) => projectBackHandler(e)}
+                >
+                  <span>Back to Home</span>
+                  <ArrowRight></ArrowRight>
+                </Link>
+              ) : null}
+            </li>
+          </ul>
+        </div>
+      ) : null}
     </div>
   )
 }
