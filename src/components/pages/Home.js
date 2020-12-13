@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
-import './home.scss'
-import gsap from 'gsap'
+// import React, { useState, useEffect, useRef } from 'react'
+// import './home.scss'
+// import gsap from 'gsap'
 // import '@lottiefiles/lottie-player'
 // import { create } from '@lottiefiles/lottie-interactivity'
 

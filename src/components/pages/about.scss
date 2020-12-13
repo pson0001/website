@@ -85,7 +85,7 @@
         .paragraph {
           max-width: 700px;
           font-weight: 500;
-          font-size: 1.2rem;
+          font-size: 1.125rem;
           line-height: 2rem;
           margin: 0;
           color: rgba(255, 255, 255, 0.5);
@@ -93,6 +93,7 @@
       }
     }
     .process {
+      margin-bottom: 200px;
       .processTitle {
         span:first-child {
           font-weight: 800;
@@ -104,7 +105,179 @@
         span {
           padding-right: 20px;
           font-weight: 600;
-          font-size: 1.2rem;
+          font-size: 1.8rem;
+        }
+      }
+      .processSteps {
+        margin-top: 60px;
+        display: flex;
+        flex-direction: row;
+        .processImg {
+          width: 160px;
+        }
+        .processDesc {
+          p:first-child {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: white;
+          }
+          p {
+            font-size: 1.125rem;
+            margin: 5px 0;
+            // color: rgba(255, 255, 255, 0.5);
+            max-width: 600px;
+          }
+        }
+      }
+    }
+    .working {
+      margin-bottom: 200px;
+      .workingTitle {
+        margin-bottom: 100px;
+        span:first-child {
+          font-weight: 800;
+          font-size: 6rem;
+          line-height: 4.2rem;
+          color: $blue;
+          -webkit-text-stroke: 1.5px rgba($color: #fff, $alpha: 1);
+        }
+      }
+      .timeline {
+        margin-bottom: 100px;
+        p:first-child {
+          font-weight: 800;
+          font-size: 2.2rem;
+          position: relative;
+          margin: 45px 10px 20px;
+          padding-left: 50px;
+          &:before {
+            content: '';
+            position: absolute;
+            top: -35px;
+            left: 0px;
+            width: 120px;
+            height: 120px;
+            border-radius: 100px;
+            border: 2px solid $pink;
+            z-index: -1;
+          }
+        }
+        p:nth-child(2) {
+          font-size: 1.125rem;
+          margin-left: 160px;
+          max-width: 600px;
+        }
+      }
+    }
+    .contact {
+      margin-bottom: 200px;
+      .contactTitle {
+        margin-bottom: 100px;
+        span:first-child {
+          font-weight: 800;
+          font-size: 6rem;
+          line-height: 4.2rem;
+          color: $blue;
+          -webkit-text-stroke: 1.5px rgba($color: #fff, $alpha: 1);
+        }
+      }
+      .contactSubTitle {
+        font-weight: 800;
+        font-size: 4.2rem;
+        margin-bottom: 20px;
+      }
+      .contactDesc {
+        font-size: 1.125rem;
+        margin: 5px 0;
+        a {
+          color: white;
+        }
+      }
+      .email {
+        margin: 60px 0;
+        display: flex;
+        position: relative;
+        cursor: pointer;
+        &::before {
+          content: 'Click to copy';
+          position: absolute;
+          top: 20px;
+          left: 103px;
+          opacity: 0;
+          transition: opacity 400ms;
+        }
+        &::after {
+          content: '';
+          background-color: $pink;
+          border-radius: 0 32px 32px 0;
+          position: absolute;
+          top: 0;
+          left: 30px;
+          width: 10px;
+          height: 64px;
+          z-index: -10;
+          transition: width 400ms;
+        }
+        &:hover {
+          position: relative;
+
+          &::before {
+            content: 'Click to copy!';
+            position: absolute;
+            opacity: 1;
+          }
+          // background-color: #fff;
+          &::after {
+            content: '';
+            background-color: $pink;
+            border-radius: 0 32px 32px 0;
+
+            width: 374px;
+            height: 64px;
+            transition: width 400ms;
+            // transform: translateX(250px);
+            // transition: transform 400ms;
+
+            z-index: -10;
+          }
+          .emailSpan div {
+            color: rgba(255, 255, 255, 0);
+            transition: color 400ms;
+          }
+        }
+        .icon {
+          position: relative;
+          padding: 20px;
+
+          &:before {
+            content: '';
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 60px;
+            height: 60px;
+            border-radius: 100px;
+            border: 2px solid $pink;
+            background-color: $blue;
+            z-index: -1;
+          }
+        }
+        .emailSpan {
+          padding: 20px 40px;
+          position: relative;
+          color: rgba(255, 255, 255, 1);
+          &:before {
+            content: '';
+            position: absolute;
+            top: 0px;
+            left: -64px;
+            width: 400px;
+            height: 60px;
+            border-radius: 100px;
+            border: 2px solid $pink;
+            z-index: -1;
+          }
         }
       }
     }
