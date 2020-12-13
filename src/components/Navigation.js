@@ -53,6 +53,35 @@ const Navigation = (props) => {
     }
   }, [location, load])
 
+  useEffect(() => {
+    props.pathnameHandler(location.pathname)
+  }, [location.pathname])
+
+  useEffect(() => {
+    if (location.pathname === '/projects' && load) {
+      projectTransition
+        .to('.intro', 1.2, {
+          xPercent: 100,
+          ease: 'power3.inOut',
+        })
+        .to('.bgCircle', 1.2, {
+          delay: -1.1,
+          xPercent: 100,
+          ease: 'power3.inOut',
+        })
+        .to('.projectsLink', 0.3, {
+          delay: -1.3,
+          opacity: 0,
+          ease: 'power3.inOut',
+        })
+        .to('.aboutLink', 0.3, {
+          delay: -1.3,
+          opacity: 0,
+          ease: 'power3.inOut',
+        })
+    }
+  }, [location, load])
+
   // Handle project animation
   const projectHandler = (e) => {
     e.preventDefault()
@@ -103,7 +132,7 @@ const Navigation = (props) => {
       .to('.intro', 1.2, { delay: -1.2, xPercent: 0, ease: 'power3.inOut' })
   }
 
-  // Handle about haviour
+  // Handle about behaviour
   const aboutHandler = (e) => {
     e.preventDefault()
 
